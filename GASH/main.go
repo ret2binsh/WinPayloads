@@ -12,7 +12,7 @@ import (
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	for {
-		fmt.Print("gopreter> ")
+		fmt.Print("gopreter>")
 		// Read the keyboad input.
 		input, err := reader.ReadString('\n')
 		if err != nil {
